@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Smooth hover lift */
+.card-hover { @apply transition-transform duration-200 ease-out; }
+.card-hover:hover { transform: translateY(-2px) scale(1.02); }
+
+
+/* Focus ring */
+.focus-ring { @apply focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2 focus:ring-offset-neutral-950; }
+
+
+/* Link bar reveal on hover */
+.card-actions { opacity: 0; transition: opacity .2s ease-out; }
+article:hover .card-actions { opacity: 1; }
