@@ -1,0 +1,23 @@
+// firebase.rules.firestore
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isAdmin() {
+      return request.auth != null
+        && (request.auth.token.email in ['gideon.living@gmail.com']);
+    }
+
+    // PUBLIC read; ADMIN write
+    match /site/profile {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Your existing projects rules
+    match /projects/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+  }
+}
